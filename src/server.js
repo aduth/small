@@ -3,6 +3,7 @@
  */
 
 import express from 'express';
+import compression from 'compression';
 import http from 'http';
 import React from 'react';
 import Router from 'react-router';
@@ -35,6 +36,7 @@ const server = http.Server( app );
  * Middlewares
  */
 
+app.use( compression() );
 app.use( express.static( __dirname + '/../public' ) );
 app.use( express.static( __dirname + '/../public-cache' ) );
 app.use( cache( {
