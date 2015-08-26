@@ -24,8 +24,9 @@ export default class Post extends Component {
 		return (
 			<html>
 				<head dangerouslySetInnerHTML={ { __html: `
-					<meta charset="UTF-8" />
 					<title>${ head.title }</title>
+					<meta charset="UTF-8" />
+					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					${ head.meta }
 					<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,700,700italic|Open+Sans:400,400italic,700,700italic" />
 					<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
