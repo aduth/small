@@ -1,0 +1,63 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	@include sans;
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	line-height: 1.6;
+	color: $font-color-body;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include serif;
+	color: $font-color-headings;
+}
+
+h1 {
+	font-size: 2.25rem;
+	line-height: 1.2;
+}
+
+hr {
+	height: 1px;
+	border: none;
+	background-color: $border-color;
+	outline: none;
+}
+
+blockquote {
+	padding: 8px 24px;
+	border-left: 16px solid #f2f2f2;
+}
+
+blockquote p {
+	margin: 0;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+a {
+	color: $color-green;
+
+	&:hover {
+		color: lighten( $color-green, 10% );
+	}
+}

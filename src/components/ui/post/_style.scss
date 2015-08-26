@@ -1,0 +1,28 @@
+.post__header {
+	margin-bottom: 1.6rem;
+}
+
+.post__title-link {
+	text-decoration: none;
+	color: currentcolor;
+}
+
+.post__title {
+	margin: 0;
+	font-size: 3rem;
+	line-height: 1.1;
+}
+
+.post__title-link:hover .post__title {
+	@extend a:hover;
+}
+
+.post__content img {
+	display: block;
+	margin: 2rem auto;
+}
+
+.post__read-more {
+	margin-top: 1rem;
+	text-align: center;
+}

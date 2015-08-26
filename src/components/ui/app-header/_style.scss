@@ -1,0 +1,25 @@
+.app-header {
+	position: relative;
+	overflow: hidden;
+	padding: 12px;
+	background-color: white;
+}
+
+.app-header__logo-link,
+.app-header__logo {
+	display: block;
+}
+
+.app-header__logo-link {
+	float: left;
+}
+
+.app-header__logo {
+	width: 100%;
+	height: auto;
+	border-radius: 50%;
+}
+
+.app-header__accounts {
+	float: right;
+}

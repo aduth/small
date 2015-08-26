@@ -1,0 +1,10 @@
+# Logs
+*.log
+
+# Dependencies
+node_modules
+
+# Generated
+/public
+/public-cache
+.sass-cache

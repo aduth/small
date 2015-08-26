@@ -1,0 +1,42 @@
+.account {
+	position: relative;
+	display: block;
+	width: 32px;
+	height: 40px;
+}
+
+.account__service {
+	@include screen-reader-text;
+}
+
+.account__icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+	opacity: 0.6;
+	transition: $transition-duration opacity, $transition-duration color;
+	font-size: 1.6rem;
+	color: $font-color-body;
+
+	@mixin account__icon-service-hover( $icon, $color ) {
+		&.#{ $icon }:hover {
+			color: $color;
+		}
+	}
+
+	@include account__icon-service-hover( 'fa-facebook-square', $color-facebook );
+	@include account__icon-service-hover( 'fa-twitter-square', $color-twitter );
+	@include account__icon-service-hover( 'fa-google-plus-square', $color-google-plus );
+	@include account__icon-service-hover( 'fa-youtube-square', $color-youtube );
+	@include account__icon-service-hover( 'fa-linkedin-square', $color-linkedin );
+	@include account__icon-service-hover( 'fa-instagram-square', $color-instagram );
+	@include account__icon-service-hover( 'fa-flickr-square', $color-flickr );
+	@include account__icon-service-hover( 'fa-pinterest-square', $color-pinterest );
+	@include account__icon-service-hover( 'fa-dribbble-square', $color-dribbble );
+	@include account__icon-service-hover( 'fa-github-square', $color-github );
+
+	&:hover {
+		opacity: 1;
+	}
+}

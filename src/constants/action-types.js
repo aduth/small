@@ -1,0 +1,6 @@
+export const RECEIVE_POST = 'RECEIVE_POST';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const RECEIVE_POST_PAGE = 'RECEIVE_POST_PAGE';
+export const RECEIVE_SITE = 'RECEIVE_SITE';
+export const RECEIVE_AUTHOR = 'RECEIVE_AUTHOR';
+export const MARK_FETCHED = 'MARK_FETCHED';

@@ -1,0 +1,20 @@
+.post-tags__tags {
+	@include reset-list;
+}
+
+.post-tags__tag {
+	display: inline-block;
+
+	&:before {
+		content: ', '
+	}
+
+	&:first-of-type:before {
+		content: '';
+	}
+}
+
+.post-tags .icon {
+	margin-top: 1px;
+	margin-left: -1px;
+}

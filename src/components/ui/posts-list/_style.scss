@@ -1,0 +1,23 @@
+.posts-list {
+	@include reset-list;
+}
+
+.posts-list__item {
+	position: relative;
+}
+
+.posts-list__item:not( :first-of-type ) {
+	margin-top: 70px;
+	padding-top: 70px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 40%;
+		left: 40%;
+		height: 1px;
+		background-color: $border-color;
+	}
+}

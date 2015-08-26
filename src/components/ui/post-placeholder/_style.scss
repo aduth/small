@@ -1,0 +1,20 @@
+.post-placeholder .post__title {
+	@include loading-pulse-text;
+	width: 70%;
+
+	&:before {
+		top: 0.4rem;
+		bottom: 0.4rem;
+	}
+}
+
+.post-placeholder .post__content {
+	height: 600px;
+	background-image: repeating-linear-gradient(
+		$loading-pulse-color,
+		$loading-pulse-color 1.2rem,
+		transparent 1.2rem,
+		transparent 1.8rem
+	);
+	animation: loading-pulse 1.6s ease-in-out infinite;
+}

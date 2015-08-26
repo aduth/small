@@ -1,0 +1,18 @@
+.button {
+	@include reset-button;
+	@include serif;
+	display: inline-block;
+	padding: 0.75rem 1.6rem;
+	border: 1px solid darken( $border-color, 20% );
+	border-radius: 0.25rem;
+	transition: 0.2s color, 0.2s border-color;
+	font-size: 1rem;
+	text-decoration: none;
+	color: lighten( $font-color-body, 20% );
+	cursor: pointer;
+
+	&:hover {
+		border-color: $color-green;
+		color: $color-green;
+	}
+}
