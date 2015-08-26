@@ -11,6 +11,9 @@ module.exports = {
 		]
 	},
 	node: {
-		fs: 'empty'
+		console: true,
+		fs: 'empty',
+		net: 'empty',
+		tls: 'empty'
 	}
 };
