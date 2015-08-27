@@ -22,7 +22,7 @@ export default class PostDate extends Component {
 		return (
 			<PostMetaBlock icon="clock-o">
 				<time dateTime={ post.date }>
-					{ moment( post.date ).format( 'll' ) }
+					{ moment( post.date ).utc().format( 'll' ) }
 				</time>
 			</PostMetaBlock>
 		);
