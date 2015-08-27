@@ -27,7 +27,7 @@ function defaultAccounts() {
 	}
 
 	return ACCOUNTS
-		.split( ',' )
+		.split( /\\?,/ )
 		.filter( ( account ) => -1 !== account.indexOf( '=' ) )
 		.map( ( account ) => {
 			const [ shortname, url ] = account.split( '=' );
@@ -40,7 +40,7 @@ export default function( accounts = null, action ) {
 		case ActionTypes.RECEIVE_AUTHOR:
 			return action.payload.author.accounts
 				.map( ( account ) => pick( account, PICK_ATTRIBUTES ) )
-				.filter( ( account ) => ! ACCOUNTS || ( new RegExp( `(^|,)${ account.shortname }(,|$)` ) ).test( ACCOUNTS ) )
+				.filter( ( account ) => ! ACCOUNTS || ( new RegExp( `(^|\\\\?,)${ account.shortname }(\\\\?,|$)` ) ).test( ACCOUNTS ) )
 				.concat( defaultAccounts() );
 			break;
 
