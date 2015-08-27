@@ -3,7 +3,6 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import ua from 'universal-analytics';
 
 /**
  * Internal dependencies
@@ -36,11 +35,11 @@ export default class BaseRoute extends Component {
 	}
 
 	trackPageView( path ) {
-		if ( ! GA_ACCOUNT_ID ) {
+		if ( ! GA_ACCOUNT_ID || 'undefined' === typeof window ) {
 			return;
 		}
 
-		ua( GA_ACCOUNT_ID, { https: true } ).pageview( path ).send();
+		window.ga( 'set', 'page', path );
 	}
 
 	render() {

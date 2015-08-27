@@ -4,8 +4,8 @@
   "version": "2.0.0",
   "description": "A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com",
   "scripts": {
-    "dev": "node webpack.server.js",
-    "build": "webpack --config webpack.config.prod.js",
+    "dev": "NODE_PATH=src/ node webpack.server.js",
+    "build": "NODE_PATH=src/ webpack --config webpack.config.prod.js",
     "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build; fi",
     "start": "NODE_PATH=src/ babel-node src/server.js"
   },
