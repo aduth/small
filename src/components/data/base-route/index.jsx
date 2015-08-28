@@ -39,7 +39,7 @@ export default class BaseRoute extends Component {
 			return;
 		}
 
-		window.ga( 'set', 'page', path );
+		window.ga( 'send', 'pageview', path );
 	}
 
 	render() {
