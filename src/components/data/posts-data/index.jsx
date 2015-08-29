@@ -52,10 +52,6 @@ export default class PostsData extends Component {
 		children: PropTypes.node
 	}
 
-	static defaultProps = {
-		page: 1
-	}
-
 	componentWillMount() {
 		this.maybeFetchPosts( this.props );
 	}
