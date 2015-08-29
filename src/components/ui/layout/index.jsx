@@ -51,7 +51,7 @@ export default class Post extends Component {
 					<meta charset="UTF-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					${ head.meta }
-					<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,700,700italic|Open+Sans:400,400italic,700,700italic" />
+					<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Open+Sans:400,400italic,700,700italic" />
 					<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 					<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/obsidian.min.css" />
 					<link rel="stylesheet" href="/bundle.css?${ version || '' }" />

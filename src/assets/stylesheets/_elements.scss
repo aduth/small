@@ -42,8 +42,11 @@ hr {
 }
 
 blockquote {
-	padding: 8px 24px;
-	border-left: 16px solid #f2f2f2;
+	@include serif;
+	margin: 2rem 1rem;
+	padding: 0.5rem 1.5rem;
+	border-left: 1rem solid lighten( $border-color, 5% );
+	font-style: italic;
 }
 
 blockquote p {
