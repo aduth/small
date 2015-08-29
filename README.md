@@ -3,6 +3,8 @@ aduth/blog
 
 A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com.
 
+![Screenshot](https://cloud.githubusercontent.com/assets/1779930/9564279/3db21614-4e6f-11e5-9568-0bea023552a6.png)
+
 ## License
 
 Copyright 2015 Andrew Duthie. Released under the MIT License.
