@@ -49,8 +49,8 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
  * Routes
  */
 
-// DELETE /cache
-app.delete( '/cache', ( request, response ) => {
+// POST /cachebust
+app.post( '/cachebust', ( request, response ) => {
 	if ( CACHE_BUST_KEY && request.query.key === CACHE_BUST_KEY ) {
 		// Only cachebust if query key matches configured API key
 		rimraf( __dirname + '/../public-cache', () => {} );
