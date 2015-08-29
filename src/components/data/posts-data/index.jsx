@@ -20,7 +20,7 @@ import { receivePostPage } from 'actions/post';
 function select( state ) {
 	return {
 		posts: state.posts,
-		postPages: state.postPages
+		postsByPage: state.postsByPage
 	};
 }
 
@@ -44,7 +44,7 @@ export function fetchPosts( page ) {
 export default class PostsData extends Component {
 	static propTypes = {
 		page: PropTypes.number,
-		postPages: PropTypes.arrayOf( PropTypes.arrayOf( PropTypes.string ) ),
+		postsByPage: PropTypes.object,
 		posts: PropTypes.object,
 		dispatch: PropTypes.func.isRequired,
 		children: PropTypes.node
@@ -55,9 +55,9 @@ export default class PostsData extends Component {
 	}
 
 	componentWillMount() {
-		const { page, posts, postPages, dispatch } = this.props;
+		const { page, posts, postsByPage, dispatch } = this.props;
 
-		if ( postPages[ page - 1 ] ) {
+		if ( postsByPage[ page ] ) {
 			return;
 		}
 
@@ -65,11 +65,11 @@ export default class PostsData extends Component {
 	}
 
 	render() {
-		const { page, postPages, posts, dispatch, children, ...props } = this.props;
+		const { page, postsByPage, posts, dispatch, children, ...props } = this.props;
 
 		let mappedPosts;
-		if ( postPages[ page - 1 ] ) {
-			mappedPosts = postPages[ page - 1 ].map( ( slug ) => posts[ slug ] );
+		if ( postsByPage[ page ] ) {
+			mappedPosts = postsByPage[ page ].map( ( slug ) => posts[ slug ] );
 		} else {
 			mappedPosts = null;
 		}
