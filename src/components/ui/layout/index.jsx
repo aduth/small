@@ -3,6 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import get from 'lodash/object/get';
 import Helmet from 'react-helmet';
 
 /**
@@ -24,6 +25,16 @@ export default class Post extends Component {
 		hydrator: Object.freeze( {} )
 	}
 
+	icon() {
+		const ico = get( this.props.site, 'icon.ico' );
+
+		if ( ! ico ) {
+			return '';
+		}
+
+		return `<link rel="icon" href="${ ico }" />`;
+	}
+
 	analytics() {
 		if ( ! GA_ACCOUNT_ID ) {
 			return '';
@@ -41,7 +52,7 @@ export default class Post extends Component {
 	}
 
 	render() {
-		const { site, hydrator, version, children } = this.props;
+		const { hydrator, version, children } = this.props;
 		const head = Helmet.rewind();
 
 		return (
@@ -55,6 +66,7 @@ export default class Post extends Component {
 					<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 					<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/obsidian.min.css" />
 					<link rel="stylesheet" href="/bundle.css?${ version || '' }" />
+					${ this.icon() }
 					${ this.analytics() }
 				` } } />
 				<body>
