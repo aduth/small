@@ -29,6 +29,9 @@
       "runtime"
     ]
   },
+  "engines": {
+    "node": "0.12.x"
+  },
   "dependencies": {
     "autoprefixer-loader": "^2.0.0",
     "babel": "^5.8.21",
