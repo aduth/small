@@ -28,9 +28,11 @@ function select( state ) {
  * Fetch utility
  */
 
-export function fetchPosts( page ) {
+export function fetchPosts( params ) {
+	const { page } = params;
+
 	return new Promise( ( resolve, reject ) => {
-		wpcom().site( SITE_ID ).postsList( { page }, ( error, response ) => {
+		wpcom().site( SITE_ID ).postsList( params, ( error, response ) => {
 			if ( error ) {
 				reject( error );
 			} else {
@@ -61,7 +63,7 @@ export default class PostsData extends Component {
 			return;
 		}
 
-		fetchPosts( page ).then( dispatch );
+		fetchPosts( { page } ).then( dispatch );
 	}
 
 	render() {

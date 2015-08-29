@@ -3,6 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import get from 'lodash/object/get';
 
 /**
  * Internal dependencies
@@ -13,16 +14,23 @@ import PostsPage from 'components/ui/posts-page';
 
 export default class PostsRoute extends Component {
 	static propTypes = {
-		site: PropTypes.object
+		params: PropTypes.object
 	}
 
-	static prepareServerRoute() {
-		return fetchPosts();
+	static prepareServerRoute( params ) {
+		return fetchPosts( params );
 	}
 
 	render() {
+		const { params } = this.props;
+
+		let page = get( params, 'page' );
+		if ( page ) {
+			page = parseInt( page, 10 );
+		}
+
 		return (
-			<PostsData>
+			<PostsData page={ page }>
 				<PostsPage />
 			</PostsData>
 		);
