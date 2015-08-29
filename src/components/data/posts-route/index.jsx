@@ -9,9 +9,9 @@ import React, { Component, PropTypes } from 'react';
  */
 
 import PostsData, { fetchPosts } from 'components/data/posts-data';
-import HomePage from 'components/ui/home-page';
+import PostsPage from 'components/ui/posts-page';
 
-export default class HomeRoute extends Component {
+export default class PostsRoute extends Component {
 	static propTypes = {
 		site: PropTypes.object
 	}
@@ -23,7 +23,7 @@ export default class HomeRoute extends Component {
 	render() {
 		return (
 			<PostsData>
-				<HomePage />
+				<PostsPage />
 			</PostsData>
 		);
 	}

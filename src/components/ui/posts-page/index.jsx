@@ -11,7 +11,7 @@ import React, { Component, PropTypes } from 'react';
 import Document from 'components/data/document';
 import PostsList from 'components/ui/posts-list';
 
-export default class HomePage extends Component {
+export default class PostsPage extends Component {
 	static propTypes = {
 		posts: PropTypes.arrayOf( PropTypes.object )
 	}
@@ -24,7 +24,7 @@ export default class HomePage extends Component {
 		const { posts } = this.props;
 
 		return (
-			<Document title="Home">
+			<Document>
 				<PostsList posts={ posts } />
 			</Document>
 		);

@@ -11,12 +11,12 @@ import { Route } from 'react-router';
 
 import BaseRoute from 'components/data/base-route';
 import PostRoute from 'components/data/post-route';
-import HomeRoute from 'components/data/home-route';
+import PostsRoute from 'components/data/posts-route';
 import NotFoundRoute from 'components/data/not-found-route';
 
 export default [
 	<Route component={ BaseRoute }>
-		<Route path="/" component={ HomeRoute } />
+		<Route path="/" component={ PostsRoute } />
 		<Route path="/:year/:month/:date/:slug" component={ PostRoute } />
 		<Route path="*" component={ NotFoundRoute } />
 	</Route>
