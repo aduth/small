@@ -57,7 +57,19 @@ export default class PostsData extends Component {
 	}
 
 	componentWillMount() {
-		const { page, posts, postsByPage, dispatch } = this.props;
+		this.maybeFetchPosts( this.props );
+	}
+
+	componentWillReceiveProps( nextProps ) {
+		if ( this.props.page === nextProps.page ) {
+			return;
+		}
+
+		this.maybeFetchPosts( nextProps );
+	}
+
+	maybeFetchPosts( props ) {
+		const { page, posts, postsByPage, dispatch } = props;
 
 		if ( postsByPage[ page ] ) {
 			return;
