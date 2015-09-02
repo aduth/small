@@ -55,7 +55,8 @@ module.exports = assign( {}, common, {
 			'process.env.SITE_ID': JSON.stringify( process.env.SITE_ID ),
 			'process.env.AUTHOR_EMAIL': JSON.stringify( process.env.AUTHOR_EMAIL ),
 			'process.env.ACCOUNTS': JSON.stringify( process.env.ACCOUNTS ),
-			'process.env.GA_ACCOUNT_ID': JSON.stringify( process.env.GA_ACCOUNT_ID )
+			'process.env.GA_ACCOUNT_ID': JSON.stringify( process.env.GA_ACCOUNT_ID ),
+			'process.env.NODE_ENV': JSON.stringify( process.env.NODE_ENV )
 		} )
 	]
 } );

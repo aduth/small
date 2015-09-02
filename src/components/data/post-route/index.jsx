@@ -9,6 +9,7 @@ import React, { Component, PropTypes } from 'react';
  */
 
 import PostData, { fetchPost } from 'components/data/post-data';
+import PostStatsTracking from 'components/data/post-stats-tracking';
 import PostPage from 'components/ui/post-page';
 
 export default class PostRoute extends Component {
@@ -27,7 +28,9 @@ export default class PostRoute extends Component {
 
 		return (
 			<PostData slug={ params.slug }>
-				<PostPage />
+				<PostStatsTracking>
+					<PostPage />
+				</PostStatsTracking>
 			</PostData>
 		);
 	}
