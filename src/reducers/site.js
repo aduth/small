@@ -14,7 +14,7 @@ import * as ActionTypes from 'constants/action-types';
  * Constants
  */
 
-const PICK_ATTRIBUTES = [ 'ID', 'name', 'description', 'jetpack', 'icon' ];
+const PICK_ATTRIBUTES = [ 'ID', 'name', 'description', 'URL', 'jetpack', 'icon' ];
 
 export default function( site = null, action ) {
 	switch ( action.type ) {

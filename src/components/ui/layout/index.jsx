@@ -4,6 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import get from 'lodash/object/get';
+import { encode } from 'he';
 import Helmet from 'react-helmet';
 
 /**
@@ -21,8 +22,20 @@ export default class Post extends Component {
 	}
 
 	static defaultProps = {
-		site: Object.freeze( {} ),
 		hydrator: Object.freeze( {} )
+	}
+
+	rss() {
+		const { site } = this.props;
+
+		if ( ! site ) {
+			return '';
+		}
+
+		const title = `${ encode( site.name ) } Feed`;
+		const url = `${ site.URL.replace( /\/$/, '' ) }/feed/`;
+
+		return `<link rel="alternate" type="application/rss+xml" title="${ title }" href="${ url }" />`;
 	}
 
 	icon() {
@@ -66,6 +79,7 @@ export default class Post extends Component {
 					<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 					<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/obsidian.min.css" />
 					<link rel="stylesheet" href="/bundle.css?${ version || '' }" />
+					${ this.rss() }
 					${ this.icon() }
 					${ this.analytics() }
 				` } } />
