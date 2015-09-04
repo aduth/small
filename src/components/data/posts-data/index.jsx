@@ -14,7 +14,7 @@ import wpcom from 'wpcom';
  */
 
 import { SITE_ID } from 'constants/config';
-import { receivePostPage } from 'actions/post';
+import { receivePostPage, setPostsQuery } from 'actions/post';
 
 /**
  * Selectors
@@ -84,6 +84,7 @@ export default class PostsData extends Component {
 			return;
 		}
 
+		dispatch( setPostsQuery( getQuery( props ) ) );
 		fetchPosts( { page } ).then( dispatch );
 	}
 
