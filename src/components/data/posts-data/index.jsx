@@ -31,7 +31,8 @@ function select( state ) {
 
 export function fetchPosts( params ) {
 	const query = assign( {
-		page: 1
+		page: 1,
+		number: 10
 	}, params );
 
 	return new Promise( ( resolve, reject ) => {
