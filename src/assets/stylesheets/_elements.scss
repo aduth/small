@@ -4,6 +4,14 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 16px;
+
+	@include desktop() {
+		font-size: 18px;
+	}
+}
+
 html,
 body {
 	height: 100%;
@@ -13,7 +21,7 @@ body {
 	@include sans;
 	margin: 0;
 	padding: 0;
-	font-size: 18px;
+	font-size: 100%;
 	line-height: 1.6;
 	color: $font-color-body;
 	-webkit-font-smoothing: antialiased;

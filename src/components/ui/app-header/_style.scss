@@ -15,9 +15,13 @@
 }
 
 .app-header__logo {
-	width: 100%;
+	width: 3.4rem;
 	height: auto;
 	border-radius: 50%;
+
+	@include desktop() {
+		width: 100%;
+	}
 }
 
 .app-header__accounts {
