@@ -18,15 +18,20 @@ export default class PostsRoute extends Component {
 	}
 
 	static prepareServerRoute( params ) {
-		const page = params.page || 1;
+		const page = params.page;
 		return fetchPosts( { page } );
 	}
 
 	render() {
 		const { params } = this.props;
 
+		let page;
+		if ( params.page ) {
+			page = parseInt( params.page, 10 );
+		}
+
 		return (
-			<PostsData page={ parseInt( params.page || 1, 10 ) }>
+			<PostsData page={ page }>
 				<PostsPage />
 			</PostsData>
 		);

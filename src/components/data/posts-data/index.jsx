@@ -3,6 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import assign from 'lodash/object/assign';
 import { connect } from 'react-redux';
 import wpcom from 'wpcom';
 
@@ -29,14 +30,16 @@ function select( state ) {
  */
 
 export function fetchPosts( params ) {
-	const { page } = params;
+	const query = assign( {
+		page: 1
+	}, params );
 
 	return new Promise( ( resolve, reject ) => {
-		wpcom().site( SITE_ID ).postsList( params, ( error, response ) => {
+		wpcom().site( SITE_ID ).postsList( query, ( error, response ) => {
 			if ( error ) {
 				reject( error );
 			} else {
-				resolve( receivePostPage( page, response.posts ) );
+				resolve( receivePostPage( query.page, response.posts ) );
 			}
 		} );
 	} );
