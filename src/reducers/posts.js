@@ -25,14 +25,12 @@ export default function( posts = null, action ) {
 				...posts,
 				...indexBy( action.payload.posts.map( ( post ) => pick( post, PICK_ATTRIBUTES ) ), 'slug' )
 			};
-			break;
 
 		case ActionTypes.RECEIVE_POST:
 			return {
 				...posts,
 				[ action.payload.post.slug ]: pick( action.payload.post, PICK_ATTRIBUTES )
 			};
-			break;
 
 		default:
 			return posts;

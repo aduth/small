@@ -42,7 +42,6 @@ export default function( accounts = null, action ) {
 				.map( ( account ) => pick( account, PICK_ATTRIBUTES ) )
 				.filter( ( account ) => ! ACCOUNTS || ( new RegExp( `(^|\\\\?,)${ account.shortname }(\\\\?,|$)` ) ).test( ACCOUNTS ) )
 				.concat( defaultAccounts() );
-			break;
 
 		default:
 			return accounts;

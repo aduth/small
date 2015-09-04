@@ -20,7 +20,6 @@ export default function( site = null, action ) {
 	switch ( action.type ) {
 		case ActionTypes.RECEIVE_SITE:
 			return pick( action.payload.site, PICK_ATTRIBUTES );
-			break;
 
 		default:
 			return site;
