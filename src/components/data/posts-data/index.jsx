@@ -4,6 +4,8 @@
 
 import React, { Component, PropTypes } from 'react';
 import assign from 'lodash/object/assign';
+import pick from 'lodash/object/pick';
+import isEqual from 'lodash/lang/isEqual';
 import { connect } from 'react-redux';
 import wpcom from 'wpcom';
 
@@ -30,10 +32,7 @@ function select( state ) {
  */
 
 export function fetchPosts( params ) {
-	const query = assign( {
-		page: 1,
-		number: 10
-	}, params );
+	const query = getQuery( params );
 
 	return new Promise( ( resolve, reject ) => {
 		wpcom().site( SITE_ID ).postsList( query, ( error, response ) => {
@@ -44,6 +43,16 @@ export function fetchPosts( params ) {
 			}
 		} );
 	} );
+}
+
+function getQuery( params ) {
+	return assign( {
+		page: 1,
+		number: 10
+	}, pick( params, [
+		'page',
+		'number'
+	] ) );
 }
 
 @connect( select )
@@ -61,7 +70,7 @@ export default class PostsData extends Component {
 	}
 
 	componentWillReceiveProps( nextProps ) {
-		if ( this.props.page === nextProps.page ) {
+		if ( isEqual( getQuery( this.props ), getQuery( nextProps ) ) ) {
 			return;
 		}
 
