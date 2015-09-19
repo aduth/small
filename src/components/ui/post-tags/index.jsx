@@ -3,6 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react/addons';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -25,7 +26,9 @@ export default class PostTags extends Component {
 		const children = Object.keys( tags ).map( ( slug ) => {
 			return (
 				<li key={ slug } className="post-tags__tag">
-					{ tags[ slug ].name }
+					<Link to={ '/tag/' + encodeURIComponent( slug ) }>
+						{ tags[ slug ].name }
+					</Link>
 				</li>
 			);
 		} );
