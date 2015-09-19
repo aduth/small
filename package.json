@@ -71,8 +71,8 @@
     "wpcom": "^4.6.0"
   },
   "devDependencies": {
-    "babel-eslint": "^4.1.0",
-    "eslint": "^1.2.1",
-    "eslint-plugin-react": "^3.3.0"
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.5.0",
+    "eslint-plugin-react": "^3.4.2"
   }
 }
