@@ -10,6 +10,7 @@ import get from 'lodash/object/get';
  */
 
 import PostsData, { fetchPosts } from 'components/data/posts-data';
+import PostQueryData, { setQuery } from 'components/data/post-query-data';
 import PostsPage from 'components/ui/posts-page';
 
 export default class PostsRoute extends Component {
@@ -18,7 +19,9 @@ export default class PostsRoute extends Component {
 	}
 
 	static prepareServerRoute( params ) {
-		return fetchPosts( params );
+		return setQuery( params ).then( ( action ) => {
+			return Promise.all( [ action, fetchPosts( action.payload.query ) ] );
+		} );
 	}
 
 	render() {
@@ -30,9 +33,11 @@ export default class PostsRoute extends Component {
 		}
 
 		return (
-			<PostsData page={ page } tag={ params.tag }>
-				<PostsPage />
-			</PostsData>
+			<PostQueryData page={ page } tag={ params.tag }>
+				<PostsData>
+					<PostsPage />
+				</PostsData>
+			</PostQueryData>
 		);
 	}
 }

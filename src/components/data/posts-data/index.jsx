@@ -3,8 +3,6 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import assign from 'lodash/object/assign';
-import pick from 'lodash/object/pick';
 import isEqual from 'lodash/lang/isEqual';
 import { connect } from 'react-redux';
 import wpcom from 'wpcom';
@@ -14,7 +12,7 @@ import wpcom from 'wpcom';
  */
 
 import { SITE_ID } from 'constants/config';
-import { receivePostPage, setPostsQuery } from 'actions/post';
+import { receivePostPage } from 'actions/post';
 
 /**
  * Selectors
@@ -23,8 +21,7 @@ import { receivePostPage, setPostsQuery } from 'actions/post';
 function select( state ) {
 	return {
 		posts: state.posts,
-		postsByPage: state.postsByPage,
-		query: state.query
+		postsByPage: state.postsByPage
 	};
 }
 
@@ -32,35 +29,22 @@ function select( state ) {
  * Fetch utility
  */
 
-export function fetchPosts( params ) {
-	const query = getQuery( params );
-
+export function fetchPosts( query ) {
 	return new Promise( ( resolve, reject ) => {
 		wpcom().site( SITE_ID ).postsList( query, ( error, response ) => {
 			if ( error ) {
 				reject( error );
 			} else {
-				resolve( receivePostPage( query.page, response.posts ) );
+				resolve( receivePostPage( query.page || 1, response.posts ) );
 			}
 		} );
 	} );
-}
-
-function getQuery( params ) {
-	return assign( {
-		number: 10
-	}, pick( params, [
-		'page',
-		'number',
-		'tag'
-	] ) );
 }
 
 @connect( select )
 export default class PostsData extends Component {
 	static propTypes = {
 		page: PropTypes.number,
-		tag: PropTypes.string,
 		postsByPage: PropTypes.object,
 		posts: PropTypes.object,
 		query: PropTypes.object,
@@ -81,19 +65,13 @@ export default class PostsData extends Component {
 	}
 
 	maybeFetchPosts( props ) {
-		const { page, posts, postsByPage, dispatch } = props;
+		const { page, postsByPage, dispatch } = props;
 
-		const nextQuery = getQuery( props );
-		if ( ! this.props.query || ! isEqual( this.props.query, nextQuery ) ) {
-			dispatch( setPostsQuery( nextQuery ) );
+		if ( isEqual( this.props.query, props.query ) || postsByPage[ page ] ) {
 			return;
 		}
 
-		if ( postsByPage[ page ] ) {
-			return;
-		}
-
-		fetchPosts( props ).then( dispatch );
+		fetchPosts( props.query ).then( dispatch );
 	}
 
 	render() {
