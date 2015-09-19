@@ -14,12 +14,11 @@ import PostsPage from 'components/ui/posts-page';
 
 export default class PostsRoute extends Component {
 	static propTypes = {
-		params: PropTypes.object
+		params: PropTypes.object.isRequired
 	}
 
 	static prepareServerRoute( params ) {
-		const page = params.page;
-		return fetchPosts( { page } );
+		return fetchPosts( params );
 	}
 
 	render() {

@@ -23,7 +23,8 @@ import { receivePostPage, setPostsQuery } from 'actions/post';
 function select( state ) {
 	return {
 		posts: state.posts,
-		postsByPage: state.postsByPage
+		postsByPage: state.postsByPage,
+		query: state.query
 	};
 }
 
@@ -47,11 +48,11 @@ export function fetchPosts( params ) {
 
 function getQuery( params ) {
 	return assign( {
-		page: 1,
 		number: 10
 	}, pick( params, [
 		'page',
-		'number'
+		'number',
+		'tag'
 	] ) );
 }
 
@@ -59,10 +60,16 @@ function getQuery( params ) {
 export default class PostsData extends Component {
 	static propTypes = {
 		page: PropTypes.number,
+		tag: PropTypes.string,
 		postsByPage: PropTypes.object,
 		posts: PropTypes.object,
+		query: PropTypes.object,
 		dispatch: PropTypes.func.isRequired,
 		children: PropTypes.node
+	}
+
+	static defaultProps = {
+		page: 1
 	}
 
 	componentWillMount() {
@@ -70,22 +77,23 @@ export default class PostsData extends Component {
 	}
 
 	componentWillReceiveProps( nextProps ) {
-		if ( isEqual( getQuery( this.props ), getQuery( nextProps ) ) ) {
-			return;
-		}
-
 		this.maybeFetchPosts( nextProps );
 	}
 
 	maybeFetchPosts( props ) {
 		const { page, posts, postsByPage, dispatch } = props;
 
+		const nextQuery = getQuery( props );
+		if ( ! this.props.query || ! isEqual( this.props.query, nextQuery ) ) {
+			dispatch( setPostsQuery( nextQuery ) );
+			return;
+		}
+
 		if ( postsByPage[ page ] ) {
 			return;
 		}
 
-		dispatch( setPostsQuery( getQuery( props ) ) );
-		fetchPosts( { page } ).then( dispatch );
+		fetchPosts( props ).then( dispatch );
 	}
 
 	render() {
