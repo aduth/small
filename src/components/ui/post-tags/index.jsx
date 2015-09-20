@@ -2,14 +2,14 @@
  * External dependencies
  */
 
-import React, { Component, PropTypes } from 'react/addons';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react';
+import values from 'lodash/object/values';
 
 /**
  * Internal dependencies
  */
 
-import PostMetaBlock from 'components/ui/post-meta-block';
+import PostTerms from 'components/ui/post-terms';
 
 export default class PostTags extends Component {
 	static propTypes = {
@@ -23,22 +23,12 @@ export default class PostTags extends Component {
 			return null;
 		}
 
-		const children = Object.keys( tags ).map( ( slug ) => {
-			return (
-				<li key={ slug } className="post-tags__tag">
-					<Link to={ '/tag/' + encodeURIComponent( slug ) }>
-						{ tags[ slug ].name }
-					</Link>
-				</li>
-			);
-		} );
-
 		return (
-			<PostMetaBlock icon="tags" className="post-tags">
-				<ul className="post-tags__tags">
-					{ children }
-				</ul>
-			</PostMetaBlock>
+			<PostTerms
+				taxonomy="tag"
+				terms={ values( tags ) }
+				icon="tags"
+				className="post-tags" />
 		);
 	}
 }

@@ -1,8 +1,8 @@
-.post-categories__categories {
+.post-terms__terms {
 	@include reset-list;
 }
 
-.post-categories__category {
+.post-terms__term {
 	display: inline-block;
 
 	&:before {
