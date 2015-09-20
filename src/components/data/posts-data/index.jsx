@@ -36,7 +36,7 @@ export function fetchPosts( query ) {
 			if ( error ) {
 				reject( error );
 			} else {
-				resolve( receivePostPage( query.page || 1, response.posts, response.meta ) );
+				resolve( receivePostPage( query.page || 1, response.posts, response.found ) );
 			}
 		} );
 	} );

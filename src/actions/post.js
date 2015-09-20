@@ -4,10 +4,10 @@
 
 import * as ActionTypes from 'constants/action-types';
 
-export function receivePostPage( page, posts, meta ) {
+export function receivePostPage( page, posts, found ) {
 	return {
 		type: ActionTypes.RECEIVE_POST_PAGE,
-		payload: { page, posts, meta }
+		payload: { page, posts, found }
 	}
 }
 

@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
  */
 
 import { setPostsQuery } from 'actions/post';
+import { POSTS_PER_PAGE } from 'constants/config';
 
 /**
  * Selectors
@@ -44,7 +45,7 @@ export function setQuery( params ) {
  */
 function getQuery( params ) {
 	return assign( {
-		number: 10
+		number: POSTS_PER_PAGE
 	}, pick( params, ( value, key ) => {
 		return value && contains( [ 'page', 'number', 'tag' ], key );
 	} ) );
