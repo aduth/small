@@ -1,0 +1,14 @@
+.pagination {
+	overflow: hidden;
+	margin-top: 3rem;
+	padding-top: 1.6rem;
+	border-top: 1px solid $border-color;
+}
+
+.pagination .is-next {
+	float: right;
+}
+
+.pagination .is-previous {
+	float: left;
+}

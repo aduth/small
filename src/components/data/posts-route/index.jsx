@@ -35,7 +35,7 @@ export default class PostsRoute extends Component {
 		return (
 			<PostQueryData page={ page } tag={ params.tag }>
 				<PostsData>
-					<PostsPage />
+					<PostsPage page={ page } />
 				</PostsData>
 			</PostQueryData>
 		);

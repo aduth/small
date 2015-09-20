@@ -76,7 +76,7 @@ export default class PostsData extends Component {
 	}
 
 	render() {
-		const { page, postsByPage, posts, dispatch, children, ...props } = this.props;
+		const { page, postsByPage, posts, hasMorePosts, dispatch, children, ...props } = this.props;
 
 		let mappedPosts;
 		if ( postsByPage[ page ] ) {
@@ -88,7 +88,8 @@ export default class PostsData extends Component {
 		return React.DOM.div( null, React.Children.map( children, ( child ) => {
 			return React.cloneElement( child, {
 				...props,
-				posts: mappedPosts
+				posts: mappedPosts,
+				hasMorePosts: hasMorePosts
 			} );
 		} ) );
 	}
