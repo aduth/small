@@ -21,7 +21,8 @@ import { receivePostPage } from 'actions/post';
 function select( state ) {
 	return {
 		posts: state.posts,
-		postsByPage: state.postsByPage
+		postsByPage: state.postsByPage,
+		hasMorePosts: state.hasMorePosts
 	};
 }
 
@@ -35,7 +36,7 @@ export function fetchPosts( query ) {
 			if ( error ) {
 				reject( error );
 			} else {
-				resolve( receivePostPage( query.page || 1, response.posts ) );
+				resolve( receivePostPage( query.page || 1, response.posts, response.meta ) );
 			}
 		} );
 	} );
@@ -65,9 +66,9 @@ export default class PostsData extends Component {
 	}
 
 	maybeFetchPosts( props ) {
-		const { page, postsByPage, dispatch } = props;
+		const { page, postsByPage, hasMorePosts, dispatch } = props;
 
-		if ( isEqual( this.props.query, props.query ) || postsByPage[ page ] ) {
+		if ( isEqual( this.props.query, props.query ) || postsByPage[ page ] || ! hasMorePosts ) {
 			return;
 		}
 
