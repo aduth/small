@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react/addons';
 import { Link } from 'react-router';
 import Highlight from 'react-highlight';
-import { parse } from 'url';
+import moment from 'moment';
 import classNames from 'classnames';
 
 /**
@@ -25,9 +25,9 @@ export default class Post extends Component {
 		excerpt: false
 	}
 
-	postLink() {
+	link() {
 		const { post } = this.props;
-		return parse( post.URL ).pathname;
+		return `/${ moment( post.date ).utc().format( 'YYYY/MM/DD' ) }/${ post.slug }`;
 	}
 
 	renderReadMore() {
@@ -39,7 +39,7 @@ export default class Post extends Component {
 
 		return (
 			<footer className="post__read-more">
-				<Button to={ this.postLink() }>Continue Reading</Button>
+				<Button to={ this.link() }>Continue Reading</Button>
 			</footer>
 		);
 	}
@@ -51,7 +51,7 @@ export default class Post extends Component {
 		return (
 			<article className={ classes }>
 				<header className="post__header">
-					<Link to={ this.postLink() } className="post__title-link">
+					<Link to={ this.link() } className="post__title-link">
 						<h1 className="post__title" dangerouslySetInnerHTML={ {
 							__html: post.title
 						} } />
