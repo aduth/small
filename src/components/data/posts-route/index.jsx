@@ -3,7 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import get from 'lodash/object/get';
+import pick from 'lodash/object/pick';
 
 /**
  * Internal dependencies
@@ -33,7 +33,7 @@ export default class PostsRoute extends Component {
 		}
 
 		return (
-			<PostQueryData page={ page } tag={ params.tag }>
+			<PostQueryData page={ page } { ...pick( params, 'tag', 'category' ) }>
 				<PostsData>
 					<PostsPage page={ page } />
 				</PostsData>

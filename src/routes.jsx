@@ -19,6 +19,7 @@ export default [
 		<Route path="/" component={ PostsRoute } />
 		<Route path="/:year/:month/:date/:slug" component={ PostRoute } />
 		<Route path="/tag/:tag" component={ PostsRoute } />
+		<Route path="/category/:category" component={ PostsRoute } />
 		<Route path="/page/:page" component={ PostsRoute } />
 		<Route path="*" component={ NotFoundRoute } />
 	</Route>

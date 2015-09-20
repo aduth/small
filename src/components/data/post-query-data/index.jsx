@@ -38,7 +38,7 @@ export function setQuery( params ) {
 
 /**
  * Generates a query object using an object containing supported parameters,
- * including `number`, `page`, or `tag`.
+ * including `number`, `page`, `s`, or `category`.
  *
  * @param  {Object} params Object containing parameters
  * @return {Object}        Query object
@@ -47,7 +47,7 @@ function getQuery( params ) {
 	return assign( {
 		number: POSTS_PER_PAGE
 	}, pick( params, ( value, key ) => {
-		return value && contains( [ 'page', 'number', 'tag' ], key );
+		return value && contains( [ 'page', 'number', 'tag', 'category' ], key );
 	} ) );
 }
 
@@ -56,6 +56,7 @@ export default class PostQueryData extends Component {
 	static propTypes = {
 		page: PropTypes.number,
 		tag: PropTypes.string,
+		category: PropTypes.string,
 		query: PropTypes.object,
 		dispatch: PropTypes.func.isRequired,
 		children: PropTypes.node
