@@ -1,0 +1,15 @@
+.post-categories__categories {
+	@include reset-list;
+}
+
+.post-categories__category {
+	display: inline-block;
+
+	&:before {
+		content: ', '
+	}
+
+	&:first-of-type:before {
+		content: '';
+	}
+}

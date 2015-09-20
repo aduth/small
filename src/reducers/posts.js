@@ -15,7 +15,7 @@ import * as ActionTypes from 'constants/action-types';
  * Constants
  */
 
-const PICK_ATTRIBUTES = [ 'ID', 'slug', 'global_ID', 'title', 'URL', 'date', 'tags', 'content', 'excerpt' ];
+const PICK_ATTRIBUTES = [ 'ID', 'slug', 'global_ID', 'title', 'URL', 'date', 'tags', 'categories', 'content', 'excerpt' ];
 
 export default function( posts = null, action ) {
 	switch ( action.type ) {

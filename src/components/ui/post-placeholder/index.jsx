@@ -19,7 +19,8 @@ const PLACEHOLDER_POST = {
 	title: '',
 	content: '',
 	date: ( new Date() ).toISOString(),
-	tags: []
+	tags: {},
+	categories: {}
 };
 
 export default class PostPlaceholder extends Component {
