@@ -50,6 +50,12 @@ export default class Pagination extends Component {
 	}
 
 	render() {
+		const { page, next } = this.props;
+
+		if ( 1 === page && ! next ) {
+			return null;
+		}
+
 		return (
 			<footer className="pagination">
 				{ this.renderPrevious() }
