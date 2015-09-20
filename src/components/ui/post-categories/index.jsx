@@ -18,15 +18,18 @@ export default class PostCategories extends Component {
 
 	render() {
 		const { post: { categories } } = this.props;
+		const terms = values( categories ).filter( ( category ) => {
+			return 'Uncategorized' !== category.name;
+		} );
 
-		if ( ! Object.keys( categories ).length ) {
+		if ( ! terms.length ) {
 			return null;
 		}
 
 		return (
 			<PostTerms
 				taxonomy="category"
-				terms={ values( categories ) }
+				terms={ terms }
 				icon="folder-open" />
 		);
 	}
