@@ -4,13 +4,6 @@
 
 import * as ActionTypes from 'constants/action-types';
 
-export function receivePosts( posts ) {
-	return {
-		type: ActionTypes.RECEIVE_POSTS,
-		payload: { posts }
-	};
-}
-
 export function receivePostPage( page, posts ) {
 	return {
 		type: ActionTypes.RECEIVE_POST_PAGE,
