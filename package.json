@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com",
   "scripts": {
     "dev": "NODE_PATH=src/ node webpack.server.js",
