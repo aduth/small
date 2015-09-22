@@ -6,8 +6,8 @@ import express from 'express';
 import compression from 'compression';
 import http from 'http';
 import React from 'react';
-import Router from 'react-router';
-import Location from 'react-router/lib/Location';
+import { match, RoutingContext } from 'react-router'
+import createLocation from 'history/lib/createLocation';
 import { isFSA } from 'flux-standard-action';
 import cache from 'serve-static-cache';
 import bodyParser from 'body-parser';
@@ -64,9 +64,13 @@ app.post( '/cachebust', ( request, response ) => {
 // GET *
 app.get( '*', ( request, response ) => {
 	const store = createStore();
-	const { path, query } = request;
+	const location = createLocation( request.url );
 
-	Router.run( routes, new Location( path, query ), ( error, routeState ) => {
+	match( { routes, location }, ( error, redirect, routeState ) => {
+		if ( redirect ) {
+			return response.redirect( 301, redirect.pathname + redirect.search );
+		}
+
 		const { components, params } = routeState;
 
 		// Allow routes to define status codes to send with the response. This
@@ -97,13 +101,16 @@ app.get( '*', ( request, response ) => {
 			} );
 		} ) ) ).then( () => {
 			const state = store.getState();
+			const page = React.renderToString(
+				<Root store={ store }>
+					{ () => <RoutingContext { ...routeState } /> }
+				</Root>
+			);
 
 			// Finally, render the page. Pass along the current store state to
 			// enable rehydrating the store on the client.
 			response.send( '<!doctype html>' + React.renderToStaticMarkup(
-				<Layout site={ state.site } hydrator={ state } version={ manifest.version }>
-					{ React.renderToString( <Root { ...routeState } store={ store } /> ) }
-				</Layout>
+				<Layout site={ state.site } hydrator={ state } version={ manifest.version } children={ page } />
 			) );
 		} ).catch( ( exception ) => {
 			response.status( 500 );
