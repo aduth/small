@@ -25,6 +25,16 @@ export default class Post extends Component {
 		hydrator: Object.freeze( {} )
 	}
 
+	document() {
+		const head = Helmet.rewind();
+
+		if ( ! head ) {
+			return '';
+		}
+
+		return `<title>${ head.title }</title>` + head.meta;
+	}
+
 	rss() {
 		const { site } = this.props;
 
@@ -66,15 +76,13 @@ export default class Post extends Component {
 
 	render() {
 		const { hydrator, version, children } = this.props;
-		const head = Helmet.rewind();
 
 		return (
 			<html>
 				<head dangerouslySetInnerHTML={ { __html: `
-					<title>${ head.title }</title>
+					${ this.document() }
 					<meta charset="UTF-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					${ head.meta }
 					<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Open+Sans:400,400italic,700,700italic" />
 					<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 					<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/obsidian.min.css" />
