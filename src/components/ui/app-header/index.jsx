@@ -15,7 +15,26 @@ import Accounts from 'components/ui/accounts';
 
 export default class AppHeader extends Component {
 	static propTypes = {
+		site: PropTypes.object,
 		accounts: PropTypes.arrayOf( PropTypes.object )
+	}
+
+	renderLogo() {
+		const { site } = this.props;
+		if ( ! site ) {
+			return;
+		}
+
+		if ( site.icon && site.icon.img ) {
+			return <img src={ site.icon.img } className="app-header__logo" />;
+		}
+
+		return (
+			<Gravatar
+				email={ AUTHOR_EMAIL }
+				size={ 40 }
+				className="app-header__logo" />
+		);
 	}
 
 	render() {
@@ -24,10 +43,7 @@ export default class AppHeader extends Component {
 		return (
 			<header className="app-header">
 				<Link to="/" className="app-header__logo-link">
-					<Gravatar
-						email={ AUTHOR_EMAIL }
-						size={ 40 }
-						className="app-header__logo" />
+					{ this.renderLogo() }
 				</Link>
 				<Accounts
 					accounts={ accounts }
