@@ -1,7 +1,6 @@
-aduth/blog
-==========
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/1779930/10063087/c7ee23a0-6237-11e5-92f0-6bcc4e1974f3.png" alt="Logo" /></p>
 
-A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com.
+Small is a blog application aimed at providing a minimal, fast, and easy-to-use interface for expressing your ideas to the world. Under the hood, it is built as an isomorphic JavaScript application powered by [WordPress.com](https://wordpress.com/).
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/1779930/9564279/3db21614-4e6f-11e5-9568-0bea023552a6.png)
 

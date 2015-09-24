@@ -1,5 +1,5 @@
 {
-  "name": "blog",
+  "name": "small",
   "private": true,
   "version": "2.1.0",
   "description": "A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aduth/blog.git"
+    "url": "https://github.com/aduth/small.git"
   },
   "author": {
     "name": "Andrew Duthie",
@@ -20,9 +20,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aduth/blog/issues"
+    "url": "https://github.com/aduth/small/issues"
   },
-  "homepage": "https://github.com/aduth/blog",
+  "homepage": "https://github.com/aduth/small",
   "babel": {
     "stage": 0,
     "optional": [
