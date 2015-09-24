@@ -1,6 +1,6 @@
 {
 	"name": "Small",
-	"description": "A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com",
+	"description": "A blogging application aimed at providing a minimal, fast, and easy-to-use interface for expressing your ideas to the world.",
 	"keywords": [
 		"blog",
 		"blogging",
@@ -9,6 +9,7 @@
 	],
 	"website": "https://github.com/aduth/small",
 	"repository": "https://github.com/aduth/small",
+	"logo": "https://cldup.com/8Jgw9m6p5y-3000x3000.png",
 	"success_url": "/",
 	"env": {
 		"SITE_ID": {
