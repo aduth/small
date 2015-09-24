@@ -1,0 +1,28 @@
+{
+	"name": "Small",
+	"description": "A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com",
+	"keywords": [
+		"blog",
+		"blogging",
+		"wordpress",
+		"javascript"
+	],
+	"website": "https://github.com/aduth/small",
+	"repository": "https://github.com/aduth/small",
+	"success_url": "/",
+	"env": {
+		"NODE_ENV": "production",
+		"SITE_ID": {
+			"description": "Hostname of your WordPress.com blog, e.g. \"andrewmduthie.wordpress.com\""
+		},
+		"AUTHOR_EMAIL": {
+			"description": "Optional email address associated with your Gravatar profile, used to retrieve connected services and Gravatar image."
+		},
+		"ACCOUNTS": {
+			"description": "Optional comma-separated set of Gravatar connected services to use. Specify custom services using the syntax \"service:url\", e.g. \"github:https://github.com/aduth\". A service must be supported by the FontAwesome web font to be displayed correctly."
+		},
+		"GA_ACCOUNT_ID": {
+			"description": "Optional Google Analytics account ID for tracking page views. Page views are automatically tracked using WordPress.com stats."
+		}
+	}
+}
