@@ -11,18 +11,21 @@
 	"repository": "https://github.com/aduth/small",
 	"success_url": "/",
 	"env": {
-		"NODE_ENV": "production",
 		"SITE_ID": {
 			"description": "Hostname of your WordPress.com blog, e.g. \"andrewmduthie.wordpress.com\""
 		},
 		"AUTHOR_EMAIL": {
-			"description": "Optional email address associated with your Gravatar profile, used to retrieve connected services and Gravatar image."
+			"description": "Optional email address associated with your Gravatar profile, used to retrieve connected services and Gravatar image.",
+			"required": false
 		},
 		"ACCOUNTS": {
-			"description": "Optional comma-separated set of Gravatar connected services to use. Specify custom services using the syntax \"service:url\", e.g. \"github:https://github.com/aduth\". A service must be supported by the FontAwesome web font to be displayed correctly."
+			"description": "Optional comma-separated set of Gravatar connected services to use. Specify custom services using the syntax \"service:url\", e.g. \"github:https://github.com/aduth\". A service must be supported by the FontAwesome web font to be displayed correctly.",
+			"required": false
 		},
 		"GA_ACCOUNT_ID": {
-			"description": "Optional Google Analytics account ID for tracking page views. Page views are automatically tracked using WordPress.com stats."
-		}
+			"description": "Optional Google Analytics account ID for tracking page views. Page views are automatically tracked using WordPress.com stats.",
+			"required": false
+		},
+		"NODE_ENV": "production"
 	}
 }

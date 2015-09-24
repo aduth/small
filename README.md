@@ -29,7 +29,7 @@ Name | Required | Description
 --- | --- | ---
 `SITE_ID` | Yes | Hostname of your WordPress.com blog, e.g. "andrewmduthie.wordpress.com"
 `AUTHOR_EMAIL` | No | Optional email address associated with your Gravatar profile, used to retrieve connected services and Gravatar image.
-`ACCOUNTS` | No | Optional comma-separated set of Gravatar connected services to use. Specify custom services using the syntax \"service:url\", e.g. \"github:https://github.com/aduth\". A service must be supported by the FontAwesome web font to be displayed correctly.
+`ACCOUNTS` | No | Optional comma-separated set of Gravatar connected services to use. Specify custom services using the syntax "service:url", e.g. "github:https://github.com/aduth". A service must be supported by the FontAwesome web font to be displayed correctly.
 `GA_ACCOUNT_ID` | No | Optional Google Analytics account ID for tracking page views. Page views are automatically tracked using WordPress.com stats.
 
 ## License
