@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 import { AUTHOR_EMAIL } from 'constants/config';
 import { receiveAuthor } from 'actions/author';
-import profile from 'utils/gravatar-profile';
+import gravatar from 'gravatar-profile';
 
 /**
  * Selectors
@@ -28,8 +28,14 @@ function select( state ) {
  */
 
 export function fetchAuthor() {
-	return profile( AUTHOR_EMAIL ).then( ( author ) => {
-		return receiveAuthor( author );
+	return new Promise( ( resolve, reject ) => {
+		gravatar( AUTHOR_EMAIL, ( error, author ) => {
+			if ( error ) {
+				reject( error );
+			} else {
+				resolve( receiveAuthor( author ) );
+			}
+		} );
 	} );
 }
 
