@@ -8,3 +8,4 @@ node_modules
 /public
 /public-cache
 .sass-cache
+webpack-assets.json

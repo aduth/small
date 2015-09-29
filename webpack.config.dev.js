@@ -48,7 +48,9 @@ module.exports = assign( {}, common, {
 		new webpack.NoErrorsPlugin(),
 		new HtmlWebpackPlugin( {
 			templateContent: function() {
-				return React.renderToStaticMarkup( React.createElement( Layout ) );
+				return React.renderToStaticMarkup( React.createElement( Layout, {
+					assets: { main: { js: '/main.js' } }
+				} ) );
 			}
 		} ),
 		new webpack.DefinePlugin( {

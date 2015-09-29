@@ -12,6 +12,7 @@ import { isFSA } from 'flux-standard-action';
 import cache from 'serve-static-cache';
 import bodyParser from 'body-parser';
 import rimraf from 'rimraf';
+import { readFileSync } from 'fs';
 
 /**
  * Internal dependencies
@@ -23,7 +24,6 @@ import Root from 'components/data/root';
 import SiteData from 'components/data/site-data';
 import Layout from 'components/ui/layout';
 import { CACHE_BUST_KEY } from 'constants/config';
-import manifest from '../package';
 
 /**
  * App initialization
@@ -31,6 +31,14 @@ import manifest from '../package';
 
 const app = express();
 const server = http.Server( app );
+
+/**
+ * Assets
+ */
+let assets;
+try {
+	assets = JSON.parse( readFileSync( './webpack-assets.json' ) );
+} catch ( e ) {}
 
 /**
  * Middlewares
@@ -110,7 +118,11 @@ app.get( '*', ( request, response ) => {
 			// Finally, render the page. Pass along the current store state to
 			// enable rehydrating the store on the client.
 			response.send( '<!doctype html>' + React.renderToStaticMarkup(
-				<Layout site={ state.site } hydrator={ state } version={ manifest.version } children={ page } />
+				<Layout
+					site={ state.site }
+					hydrator={ state }
+					assets={ assets }
+					children={ page } />
 			) );
 		} ).catch( ( exception ) => {
 			response.status( 500 );

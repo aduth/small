@@ -4,6 +4,7 @@
 var webpack = require( 'webpack' ),
 	HtmlWebpackPlugin = require( 'html-webpack-plugin' ),
 	ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
+	AssetsPlugin = require( 'assets-webpack-plugin' ),
 	assign = require( 'lodash/object/assign' ),
 	manifest = require( './package' );
 
@@ -15,6 +16,9 @@ var common = require( './webpack.config.common' );
 
 module.exports = assign( {}, common, {
 	entry: __dirname + '/src/client.js',
+	output: assign( {}, common.output, {
+		filename: 'main.[hash].js'
+	} ),
 	module: {
 		loaders: [
 			{
@@ -38,7 +42,7 @@ module.exports = assign( {}, common, {
 				warnings: false
 			}
 		} ),
-		new ExtractTextPlugin( 'bundle.css', {
+		new ExtractTextPlugin( 'main.[hash].css', {
 			allChunks: true
 		} ),
 		new webpack.DefinePlugin( {
@@ -47,6 +51,7 @@ module.exports = assign( {}, common, {
 			'process.env.ACCOUNTS': JSON.stringify( process.env.ACCOUNTS ),
 			'process.env.GA_ACCOUNT_ID': JSON.stringify( process.env.GA_ACCOUNT_ID ),
 			'process.env.NODE_ENV': JSON.stringify( process.env.NODE_ENV )
-		} )
+		} ),
+		new AssetsPlugin()
 	]
 } );
