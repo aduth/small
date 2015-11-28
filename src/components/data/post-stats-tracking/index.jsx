@@ -61,7 +61,7 @@ export default class PostStatsTracking extends Component {
 		};
 
 		if ( ! site.jetpack && REGEXP_WPCOM_SUBDOMAIN.test( site.URL ) ) {
-			stat.subd = site.URL.matches( REGEXP_WPCOM_SUBDOMAIN )[ 1 ];
+			stat.subd = site.URL.match( REGEXP_WPCOM_SUBDOMAIN )[ 1 ];
 		}
 
 		let tracker = new Image();
