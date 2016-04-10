@@ -5,9 +5,11 @@
   "description": "A minimal blog, built as an isomorphic JavaScript app powered by WordPress.com",
   "scripts": {
     "dev": "NODE_PATH=src/ node webpack.server.js",
-    "build": "NODE_PATH=src/ rimraf public && webpack --config webpack.config.prod.js",
+    "build": "npm run build-client && npm run build-server",
+    "build-client": "NODE_PATH=src/ rimraf public && webpack --config webpack.config.prod.js",
+    "build-server": "NODE_PATH=src/ rimraf lib && babel src --out-dir lib",
     "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build; fi",
-    "start": "NODE_PATH=src/ babel-node src/server.js"
+    "start": "NODE_PATH=lib/ node lib/server.js"
   },
   "repository": {
     "type": "git",

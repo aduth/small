@@ -29,7 +29,7 @@ export default class Document {
 		children: PropTypes.node
 	}
 
-	title() {
+	getTitle() {
 		const { site, title } = this.props;
 		let parts = [];
 
@@ -44,7 +44,7 @@ export default class Document {
 		return parts.join( TITLE_SEPARATOR );
 	}
 
-	description() {
+	getDescription() {
 		const { site, description } = this.props;
 
 		let content = description;
@@ -62,7 +62,7 @@ export default class Document {
 
 		return (
 			<div>
-				<Helmet title={ this.title() } meta={ [ this.description() ].filter( Boolean ) } />
+				<Helmet title={ this.getTitle() } meta={ [ this.getDescription() ].filter( Boolean ) } />
 				{ children }
 			</div>
 		);

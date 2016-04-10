@@ -7,5 +7,6 @@ node_modules
 # Generated
 /public
 /public-cache
+/lib
 .sass-cache
 webpack-assets.json
