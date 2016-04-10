@@ -1,5 +1,5 @@
 /* eslint-disable vars-on-top */
-require( 'babel/register' );
+require( 'babel-register' );
 
 /**
  * External dependencies
